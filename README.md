@@ -6,9 +6,7 @@ This repository tracks sparse CMS-HGCAL-DQM layouts and rendering plugins for sy
 2. The code will be modified from time to time to meet the needs of beam tests at different stages
 3. The DQM layout for the HGCAL beam tests differs slightly from the official one
 
-Still, once the HGCAL is ready for deployment in the CMS DQM (sometime between 2023 and 2029), one can consider creating a pull request to incorporate the files in the official tool [cms-DQM/dqmgui_prod](https://github.com/cms-DQM/dqmgui_prod).
-
-Below are instructions on building a DQM GUI for the HGCAL (cf. [cms-twiki-DQMGuiForUsers](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers)).
+Below are instructions on building a DQM GUI for the HGCAL. These commands are based on an official tutorial [[1]](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers), with additional steps for setting up HGCAL DQM. The procedure includes the following four steps:
 
 - Step1: Deploy a dqmgui
 - Step2: Update layout and rendering plugins
@@ -16,6 +14,8 @@ Below are instructions on building a DQM GUI for the HGCAL (cf. [cms-twiki-DQMGu
 - Step4: Useful commands (start, stop, and upload DQM files)
 
 Steps 1 to 3 only need to be performed for the first time. Step 4 provides commands for usual maintenance.
+
+Reminder: once the HGCAL is ready for deployment in the CMS DQM (sometime between 2023 and 2029), one can consider creating a pull request to incorporate the files in the official tool [[2]](https://github.com/cms-DQM/dqmgui_prod).
 
 ## How to build a DQM GUI for the HGCAL beam tests
 
@@ -61,7 +61,7 @@ mv backup/HGCalRenderPlugin.cc .
 ```
 
 ### Step3: Implement TH2Poly for monitor elements
-The silicon sensor maps are TH2Poly. These are not yet included in DQMGUI ([cms-sw/cmssw#PR41932](https://github.com/cms-sw/cmssw/pull/41932) and [cms-DQM/dqmgui_prod#PR14](https://github.com/cms-DQM/dqmgui_prod/pull/14)). Use the following commands to implement TH2Poly for displaying polygonal wafer maps. You will need the files from /afs/cern.ch/user/d/ditsiono/public/DQM_stuff
+The silicon sensor maps are TH2Poly. These are not yet included in DQMGUI [3][4]. Use the following commands to implement TH2Poly for displaying polygonal wafer maps. You will need the files from /afs/cern.ch/user/d/ditsiono/public/DQM_stuff
 
 ```bash
 cd ~/tbDQMGUI/current/sw/slc7_amd64_gcc630/cms/dqmgui/
@@ -72,9 +72,7 @@ cp -r </afs/cern.ch/user/d/ditsiono/public/DQM_stuff/new_feature_9.7.8.2/> .
 source quick_replacement.sh
 ```
 
-The `new_feature_9.7.8.2` was created following instructions in [cms-DQM/dqmgui_prod#README.md](https://github.com/cms-DQM/dqmgui_prod/blob/index128/README.md). Relevant links are provided here in case of a need in the future.
-- https://github.com/ywkao/dqmgui_prod/tree/th2poly
-- https://github.com/cms-DQM/dqmgui_prod/issues/13#issuecomment-1576425471
+The `new_feature_9.7.8.2` was created following instructions in [[2]](https://github.com/cms-DQM/dqmgui_prod/blob/index128/README.md). Relevant links are provided here [5][6] in case of a need in the future.
 
 ### Step4: Useful commands (start, stop, and upload DQM files)
 To start the DQM GUI with an "online" flavor:
@@ -110,6 +108,9 @@ source current/apps/dqmgui/128/etc/profile.d/env.sh
 ```
 
 ## Reference
-- https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers
-- https://github.com/cms-DQM/dqmgui_prod
-- https://indico.cern.ch/event/1331642/
+[1] https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers
+[2] https://github.com/cms-DQM/dqmgui_prod
+[3] [cms-sw/cmssw#PR41932](https://github.com/cms-sw/cmssw/pull/41932)
+[4] [cms-DQM/dqmgui_prod#PR14](https://github.com/cms-DQM/dqmgui_prod/pull/14)
+[5] https://github.com/cms-DQM/dqmgui_prod/issues/13#issuecomment-1576425471
+[6] https://github.com/ywkao/dqmgui_prod/tree/th2poly
