@@ -1,15 +1,14 @@
 # hgc-dqmgui
 
-This repository tracks sparse files of CMS-HGCAL-DQM layouts and rendering plugins for system tests. These code are tracked independently because:
+This repository tracks sparse CMS-HGCAL-DQM layouts and rendering plugins for system tests. These codes are placed in an independent storage instead of the official one because:
 
-1. It is much easier for mainteinance
-2. The code will be modified from time to time to meet the needs in beam tests at different stages
-3. The DQM layout for the HGCAL beam tests can be different from the official one
-4. Expertise from the CMS DQM experts is required to maintain the code in the official tool
+1. Expertise from the CMS DQM experts is required to maintain the code in the official tool
+2. The code will be modified from time to time to meet the needs of beam tests at different stages
+3. The DQM layout for the HGCAL beam tests differs slightly from the official one
 
-Still, once the HGCAL is about to be deployed in the CMS DQM (somtime in the period of 2023 - 2029), one can consider to create a pull request to merge the files in the official tool `dqm-deployment`.
+Still, once the HGCAL is about to be deployed in the CMS DQM (sometime between 2023 and 2029), one can consider creating a pull request to merge the files in the official tool [cms-DQM/dqmgui_prod](https://github.com/cms-DQM/dqmgui_prod).
 
-Below shows instructions on building a dqm-gui (cf. [cms-twiki-DQMGuiForUsers](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers)) and replacing the layouts and rendering plugins for the HGCAL beam test purpose.
+Below are instructions on building a DQM GUI (cf. [cms-twiki-DQMGuiForUsers](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers)) and replacing the codes for the HGCAL beam test purpose.
 
 ## Build DQM GUI
 
