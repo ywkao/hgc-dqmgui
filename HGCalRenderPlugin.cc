@@ -24,18 +24,19 @@
 class HGCalRenderPlugin : public DQMRenderPlugin {
 public:
   virtual bool applies(const VisDQMObject &o, const VisDQMImgInfo &) {
-    if (o.name.find("HGCAL/Digis") != std::string::npos)
+    if (o.name.find("HGCAL/Modules") != std::string::npos)
       return true;
-    if (o.name.find("HGCAL/Maps") != std::string::npos)
+    else if (o.name.find("HGCAL/Digis") != std::string::npos)
       return true;
-    if (o.name.find("HGCAL/Summary") != std::string::npos)
-      return true;
-    return false;
+    else
+      return false;
   }
 
   virtual void preDraw(TCanvas *c, const VisDQMObject &o, const VisDQMImgInfo &, VisDQMRenderInfo &) {
     c->cd();
-    if (o.name.find("HGCAL/Summary/hex") != std::string::npos) {
+    c->SetRightMargin(0.15);
+
+    if (o.name.find("HGCAL/Modules/hex") != std::string::npos) {
       //printf("[DEBUG] HGCAL/Maps/%s is loaded\n", o.name.c_str());
       if (dynamic_cast<TH2Poly *>(o.object)) {
         preDrawHex(o);
@@ -77,10 +78,11 @@ private:
       gStyle->SetPaintTextFormat(".0f");
     } else {
       gStyle->SetPaintTextFormat(".2f");
+      // gStyle->SetPaintTextFormat(".1e");
     }
 
     obj->SetMarkerSize(0.7);
-    obj->SetOption("colztext");
+    obj->SetOption("colz"); // colztext
     obj->SetStats(kFALSE);
     obj->GetXaxis()->CenterLabels();
     obj->GetYaxis()->CenterLabels();
@@ -102,11 +104,13 @@ private:
     gStyle->SetPadBorderSize(0);
     gStyle->SetOptStat(10);
 
-    if (o.name.find("h2d") != std::string::npos) {
+    if ( (o.name.find("econd") != std::string::npos) || (o.name.find("Quality") != std::string::npos) ) {
+      gStyle->SetOptStat(10);
       gStyle->SetPalette(kCherry);
       TColor::InvertPalette();
-      obj->SetStats(kFALSE);
+      obj->SetStats(kTRUE);
     } else {
+      gStyle->SetOptStat(1111);
       gStyle->SetPalette(1);
       obj->SetStats(kTRUE);
     }
@@ -133,6 +137,27 @@ private:
     TString name(obj->GetName());
     assert(obj);
 
+    // printf("[DEBUG-tmp] %s\n", name.Data());
+        // Get the palette axis
+    TPaletteAxis *palette = (TPaletteAxis*)obj->GetListOfFunctions()->FindObject("palette");
+    if (palette) {
+        // Adjust title offset (moves title away from axis)
+        obj->GetZaxis()->SetTitleOffset(1.2);
+
+        // Rotate the title (angle in degrees)
+        // obj->GetZaxis()->SetTitleAngle(90);  // Vertical title // not working
+
+        // You can also adjust other properties
+        obj->GetZaxis()->SetTitleFont(42);
+        obj->GetZaxis()->SetTitleSize(0.035);
+
+        // Force redraw to apply changes
+        c->Update();
+    }
+
+    //--------------------------------------------------
+    // Draw auxiliary lines
+    //--------------------------------------------------
     std::vector<std::vector<double>> x_coords;
     std::vector<std::vector<double>> y_coords;
 
@@ -173,7 +198,7 @@ private:
       text.SetTextFont(43);
       text.SetTextSize(12);
 
-      if (name.Contains("HD")) {
+      if (name.Contains("HD") || name.Contains("MH")) {
         double theta1 = 0.;
         double theta2 = 4 * TMath::Pi() / 3.;
         double theta3 = 2 * TMath::Pi() / 3.;
@@ -204,7 +229,7 @@ private:
           text.DrawText(x, y, v_texts[i]);
         }
 
-      } else if (name.Contains("LD")) {  // LD
+      } else if (name.Contains("LD") || name.Contains("ML") || name.Contains("hex")) {  // LD
         double theta1 = -TMath::Pi() / 3.;
         double theta2 = TMath::Pi() / 3.;
         double theta3 = TMath::Pi();

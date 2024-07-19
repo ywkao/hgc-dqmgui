@@ -1,45 +1,39 @@
 def hgcallayout(i, p, *rows): i["HGCAL/Layouts/" + p] = DQMItem(layout=rows)
 
 ########### define varialbles for frequently used strings #############
-hgcallink = "   >>> <a href=https://twiki.cern.ch/twiki/bin/view/CMS/DQMShiftRPC>Description</a>"
-summary = "summary map for hgcal, this is NOT an efficiency measurement. Each bin is normalized to 1 considering disconnected chamber"
-noise = "Average number of noisy strip per roll, counted if a occupancy of single strip is greater than 3.5 times the average of a chamber"
-hgcalevents = "Events processed by the RPC DQM"
-fed = "FED Fatal Errors"
-top = "RPC TOP Summary Histogram <br><font color=green><b>GREEN</b> - Good Chamber </font><br> <font color=blue><b>BLUE</b> - Chamber OFF</font><br> <font color=yellow><b>YELLOW</b> - Noisy Strip </font><br> <font color=orange><b>ORANGE</b> - Noisy Chamber </font><br> <font color=pink><b>PINK</b> - Partly Dead Chamber </font><br> <font color=red><b>RED</b> - Fully Dead Chamber </font><br> <font color=aqua><b>LIGHT BLUE</b> - Bad Occupancy Shape </font> <br>"
-occupancy = "Occupancy "
-clsize = "Cluster Size of RPC system"
-nrofcl = "Number of clusters, i.e. reconstructed hits."
-nrofdigi = "Number of single hits."
-bx = "RPC BX distribution "
-emtf = "RPC L1T EMTF information. "
+hgcallink = "   >>> <a href=https://hgcaldocs.web.cern.ch/>Description</a>"
+quality = "summary of module status"
+summary = "wafer map for hgcal"
+digis = "digis information"
 
 ################### Links to TOP Summary Histograms #################################
-#hgcallayout(dqmitems, "00-Summary_Map",
-#          [{ 'path': "HGCAL/Summary/p_adc", 'description': summary + hgcallink }])
-
-hgcallayout(dqmitems, "01-ChannelId-0_1_5_0",
-          [{ 'path': "HGCAL/Summary/hex_channelId0_1_5_0", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "02-ChannelId-0_2_5_0",
-          [{ 'path': "HGCAL/Summary/hex_channelId0_2_5_0", 'description': summary + hgcallink }])
-
-hgcallayout(dqmitems, "03-Pedestal-0_1_5_0",
-          [{ 'path': "HGCAL/Summary/hex_pedestal0_1_5_0", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "04-Pedestal-0_2_5_0",
-          [{ 'path': "HGCAL/Summary/hex_pedestal0_2_5_0", 'description': summary + hgcallink }])
-
-#hgcallayout(dqmitems, "05-Correlation_Ch22",
-#          [{ 'path': "HGCAL/Digis/h2d_adc_channel_22", 'description': summary + hgcallink }])
-
-##Noisy summary
-#hgcallayout(dqmitems, "01-Noisy_summary_Map",
-#          [{ 'path': "HGCAL/EventInfo/noisySummaryMap", 'description': noise + hgcallink }])
-#
-##FED Fatal
-#hgcallayout(dqmitems, "02-Fatal_FED_Errors",
-#          [{ 'path': "HGCAL/FEDIntegrity_EvF/FEDFatal", 'description': fed + hgcallink }])
-#
-##HGCAL Events
-#hgcallayout(dqmitems, "03-HGCAL_Events",
-#          [{ 'path': "HGCAL/AllHits/HGCALEvents", 'description': hgcalevents + hgcallink }])
-#
+hgcallayout(dqmitems, "01-econdPayload",
+          [{ 'path': "HGCAL/Digis/econdPayload", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "02-econdQualityH",
+          [{ 'path': "HGCAL/Digis/econdQualityH", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "03-cbQualityH",
+          [{ 'path': "HGCAL/Digis/cbQualityH", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "04-Module0-avgadc",
+          [{ 'path': "HGCAL/Modules/hex_avgadc_module_0", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "05-Module1-avgadc",
+          [{ 'path': "HGCAL/Modules/hex_avgadc_module_1", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "06-Module2-avgadc",
+          [{ 'path': "HGCAL/Modules/hex_avgadc_module_2", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "07-Module3-avgadc",
+          [{ 'path': "HGCAL/Modules/hex_avgadc_module_3", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "08-Module4-avgadc",
+          [{ 'path': "HGCAL/Modules/hex_avgadc_module_4", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "09-Module5-avgadc",
+          [{ 'path': "HGCAL/Modules/hex_avgadc_module_5", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "10-digis0-adc",
+          [{ 'path': "HGCAL/Digis/adc_module_0", 'description': digis + hgcallink }])
+hgcallayout(dqmitems, "11-digis1-adc",
+          [{ 'path': "HGCAL/Digis/adc_module_1", 'description': digis + hgcallink }])
+hgcallayout(dqmitems, "12-digis2-adc",
+          [{ 'path': "HGCAL/Digis/adc_module_2", 'description': digis + hgcallink }])
+hgcallayout(dqmitems, "13-digis3-adc",
+          [{ 'path': "HGCAL/Digis/adc_module_3", 'description': digis + hgcallink }])
+hgcallayout(dqmitems, "14-digis4-adc",
+          [{ 'path': "HGCAL/Digis/adc_module_4", 'description': digis + hgcallink }])
+hgcallayout(dqmitems, "15-digis5-adc",
+          [{ 'path': "HGCAL/Digis/adc_module_5", 'description': digis + hgcallink }])
