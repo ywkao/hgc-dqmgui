@@ -26,6 +26,8 @@ public:
   virtual bool applies(const VisDQMObject &o, const VisDQMImgInfo &) {
     if (o.name.find("HGCAL/Modules") != std::string::npos)
       return true;
+    else if (o.name.find("HGCAL/Layers") != std::string::npos)
+      return true;
     else if (o.name.find("HGCAL/Digis") != std::string::npos)
       return true;
     else
@@ -36,16 +38,8 @@ public:
     c->cd();
     c->SetRightMargin(0.15);
 
-    if (o.name.find("HGCAL/Modules/hex") != std::string::npos) {
-      //printf("[DEBUG] HGCAL/Maps/%s is loaded\n", o.name.c_str());
-      if (dynamic_cast<TH2Poly *>(o.object)) {
-        preDrawHex(o);
-        //printf("[DEBUG] HGCAL/Maps/%s is casted to TH2Poly\n", o.name.c_str());
-      } else {
-        //if(o.object) printf("[DEBUG] o.object is NOT empty\n");
-        //else printf("[DEBUG] o.object is NULL pointer\n");
-        //printf("[DEBUG] HGCAL/Maps/%s is failed to cast to TH2Poly\n", o.name.c_str());
-      }
+    if (dynamic_cast<TH2Poly *>(o.object)) {
+      preDrawHex(o);
     } else if (dynamic_cast<TH2F *>(o.object)) {
       preDrawTH2(c, o);
     } else if (dynamic_cast<TH1F *>(o.object)) {
@@ -68,21 +62,28 @@ private:
 
   void preDrawHex(const VisDQMObject &o) {
     TH2Poly *obj = dynamic_cast<TH2Poly *>(o.object);
+    TString name(obj->GetName());
     assert(obj);
 
     //gStyle->SetPalette(kViridis);
     gStyle->SetPalette(kBird);
+    obj->SetOption("colz");
 
-    //if (o.name.find("hex_channelId") !=std::string::npos) {
-    if (o.name.find("hex_channelId") != std::string::npos || o.name.find("hex_hgcrocPin") != std::string::npos || o.name.find("hex_sicellPadId") != std::string::npos) {
+    //customize display of hex plots
+    if (name.Contains("hex_channelId") || name.Contains("hex_hgcrocPin") || name.Contains("hex_sicellPadId")) {
       gStyle->SetPaintTextFormat(".0f");
+      obj->SetMarkerSize(0.7);
+      obj->SetOption("colztext");
+    } else if (name.Contains("_layer_")) {
+      gStyle->SetPaintTextFormat(".2e");
+      obj->SetMarkerSize(2.0);
+      obj->SetOption("colztext");
     } else {
       gStyle->SetPaintTextFormat(".2f");
-      // gStyle->SetPaintTextFormat(".1e");
+      obj->SetMarkerSize(0.7);
+      obj->SetOption("colz");
     }
 
-    obj->SetMarkerSize(0.7);
-    obj->SetOption("colz"); // colztext
     obj->SetStats(kFALSE);
     obj->GetXaxis()->CenterLabels();
     obj->GetYaxis()->CenterLabels();
@@ -161,7 +162,10 @@ private:
     std::vector<std::vector<double>> x_coords;
     std::vector<std::vector<double>> y_coords;
 
-    if (name.Contains("LD_0")) {
+    if (name.Contains("_module_")) {
+      x_coords = aux::x_coords_LD_full;
+      y_coords = aux::y_coords_LD_full;
+    } else if (name.Contains("LD_0")) {
       x_coords = aux::x_coords_LD_full;
       y_coords = aux::y_coords_LD_full;
     } else if (name.Contains("LD_3")) {
@@ -179,7 +183,7 @@ private:
     if (drawLine) {
       TLine line;
       line.SetLineStyle(1);
-      line.SetLineColor(2);
+      line.SetLineColor(kRed-7);
       line.SetLineWidth(2);
 
       for (unsigned iline = 0; iline < x_coords.size(); ++iline) {
@@ -229,7 +233,7 @@ private:
           text.DrawText(x, y, v_texts[i]);
         }
 
-      } else if (name.Contains("LD") || name.Contains("ML") || name.Contains("hex")) {  // LD
+      } else if (name.Contains("LD") || name.Contains("ML") || name.Contains("_module")) {  // LD
         double theta1 = -TMath::Pi() / 3.;
         double theta2 = TMath::Pi() / 3.;
         double theta3 = TMath::Pi();

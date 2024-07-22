@@ -15,8 +15,23 @@
 
 # DQM workspaces:
 server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
-                 'HGCAL/Layouts/00-Modules',
-                 'HGCAL/Layouts/01-Digis',
+                 # 'HGCAL/Layouts/00-Modules',
+                 # 'HGCAL/Layouts/01-Digis',
+                 "HGCAL/Digis/econdPayload",
+                 "HGCAL/Digis/econdQualityH",
+                 "HGCAL/Digis/cbQualityH",
+                 "HGCAL/Modules/hex_avgadc_module_0",
+                 "HGCAL/Modules/hex_avgadc_module_1",
+                 "HGCAL/Modules/hex_avgadc_module_2",
+                 "HGCAL/Modules/hex_avgadc_module_3",
+                 "HGCAL/Modules/hex_avgadc_module_4",
+                 "HGCAL/Modules/hex_avgadc_module_5",
+                 "HGCAL/Digis/adc_module_0",
+                 "HGCAL/Digis/adc_module_1",
+                 "HGCAL/Digis/adc_module_2",
+                 "HGCAL/Digis/adc_module_3",
+                 "HGCAL/Digis/adc_module_4",
+                 "HGCAL/Digis/adc_module_5",
                 )
 
 #server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
