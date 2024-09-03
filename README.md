@@ -6,6 +6,10 @@ This repository tracks sparse CMS-HGCAL-DQM layouts and rendering plugins for sy
 2. The code will be modified from time to time to meet the needs of beam tests at different stages
 3. The DQM layout for the HGCAL beam tests differs slightly from the official one
 
+# hgc-dqmgui (outdated)
+> [!IMPORTANT]
+> Please follow a link here: https://github.com/cms-DQM/dqmgui_prod_deployment/wiki (update: 2024)
+
 Below are instructions on building a DQM GUI for the HGCAL. These commands are based on an official tutorial, [twiki/CMS/DQMGuiForUsers](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DQMGuiForUsers), with additional steps for setting up HGCAL DQM. The procedure includes the following four steps:
 
 - Step1: Deploy a dqmgui
