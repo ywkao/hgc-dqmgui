@@ -24,27 +24,22 @@
 class HGCalRenderPlugin : public DQMRenderPlugin {
 public:
   virtual bool applies(const VisDQMObject &o, const VisDQMImgInfo &) {
-    if (o.name.find("HGCAL/Digis") != std::string::npos)
+    if (o.name.find("HGCAL/Modules") != std::string::npos)
       return true;
-    if (o.name.find("HGCAL/Maps") != std::string::npos)
+    else if (o.name.find("HGCAL/Layers") != std::string::npos)
       return true;
-    if (o.name.find("HGCAL/Summary") != std::string::npos)
+    else if (o.name.find("HGCAL/Digis") != std::string::npos)
       return true;
-    return false;
+    else
+      return false;
   }
 
   virtual void preDraw(TCanvas *c, const VisDQMObject &o, const VisDQMImgInfo &, VisDQMRenderInfo &) {
     c->cd();
-    if (o.name.find("HGCAL/Summary/hex") != std::string::npos) {
-      //printf("[DEBUG] HGCAL/Maps/%s is loaded\n", o.name.c_str());
-      if (dynamic_cast<TH2Poly *>(o.object)) {
-        preDrawHex(o);
-        //printf("[DEBUG] HGCAL/Maps/%s is casted to TH2Poly\n", o.name.c_str());
-      } else {
-        //if(o.object) printf("[DEBUG] o.object is NOT empty\n");
-        //else printf("[DEBUG] o.object is NULL pointer\n");
-        //printf("[DEBUG] HGCAL/Maps/%s is failed to cast to TH2Poly\n", o.name.c_str());
-      }
+    c->SetRightMargin(0.15);
+
+    if (dynamic_cast<TH2Poly *>(o.object)) {
+      preDrawHex(o);
     } else if (dynamic_cast<TH2F *>(o.object)) {
       preDrawTH2(c, o);
     } else if (dynamic_cast<TH1F *>(o.object)) {
@@ -67,20 +62,28 @@ private:
 
   void preDrawHex(const VisDQMObject &o) {
     TH2Poly *obj = dynamic_cast<TH2Poly *>(o.object);
+    TString name(obj->GetName());
     assert(obj);
 
     //gStyle->SetPalette(kViridis);
     gStyle->SetPalette(kBird);
+    obj->SetOption("colz");
 
-    //if (o.name.find("hex_channelId") !=std::string::npos) {
-    if (o.name.find("hex_channelId") != std::string::npos || o.name.find("hex_hgcrocPin") != std::string::npos || o.name.find("hex_sicellPadId") != std::string::npos) {
+    //customize display of hex plots
+    if (name.Contains("hex_channelId") || name.Contains("hex_hgcrocPin") || name.Contains("hex_sicellPadId")) {
       gStyle->SetPaintTextFormat(".0f");
+      obj->SetMarkerSize(0.7);
+      obj->SetOption("colztext");
+    } else if (name.Contains("_layer_")) {
+      gStyle->SetPaintTextFormat(".2e");
+      obj->SetMarkerSize(2.0);
+      obj->SetOption("colztext");
     } else {
       gStyle->SetPaintTextFormat(".2f");
+      obj->SetMarkerSize(0.7);
+      obj->SetOption("colz");
     }
 
-    obj->SetMarkerSize(0.7);
-    obj->SetOption("colztext");
     obj->SetStats(kFALSE);
     obj->GetXaxis()->CenterLabels();
     obj->GetYaxis()->CenterLabels();
@@ -102,11 +105,13 @@ private:
     gStyle->SetPadBorderSize(0);
     gStyle->SetOptStat(10);
 
-    if (o.name.find("h2d") != std::string::npos) {
+    if ( (o.name.find("econd") != std::string::npos) || (o.name.find("Quality") != std::string::npos) ) {
+      gStyle->SetOptStat(10);
       gStyle->SetPalette(kCherry);
       TColor::InvertPalette();
-      obj->SetStats(kFALSE);
+      obj->SetStats(kTRUE);
     } else {
+      gStyle->SetOptStat(1111);
       gStyle->SetPalette(1);
       obj->SetStats(kTRUE);
     }
@@ -133,10 +138,34 @@ private:
     TString name(obj->GetName());
     assert(obj);
 
+    // printf("[DEBUG-tmp] %s\n", name.Data());
+        // Get the palette axis
+    TPaletteAxis *palette = (TPaletteAxis*)obj->GetListOfFunctions()->FindObject("palette");
+    if (palette) {
+        // Adjust title offset (moves title away from axis)
+        obj->GetZaxis()->SetTitleOffset(1.2);
+
+        // Rotate the title (angle in degrees)
+        // obj->GetZaxis()->SetTitleAngle(90);  // Vertical title // not working
+
+        // You can also adjust other properties
+        obj->GetZaxis()->SetTitleFont(42);
+        obj->GetZaxis()->SetTitleSize(0.035);
+
+        // Force redraw to apply changes
+        c->Update();
+    }
+
+    //--------------------------------------------------
+    // Draw auxiliary lines
+    //--------------------------------------------------
     std::vector<std::vector<double>> x_coords;
     std::vector<std::vector<double>> y_coords;
 
-    if (name.Contains("LD_0")) {
+    if (name.Contains("_module_")) {
+      x_coords = aux::x_coords_LD_full;
+      y_coords = aux::y_coords_LD_full;
+    } else if (name.Contains("LD_0")) {
       x_coords = aux::x_coords_LD_full;
       y_coords = aux::y_coords_LD_full;
     } else if (name.Contains("LD_3")) {
@@ -154,7 +183,7 @@ private:
     if (drawLine) {
       TLine line;
       line.SetLineStyle(1);
-      line.SetLineColor(2);
+      line.SetLineColor(kRed-7);
       line.SetLineWidth(2);
 
       for (unsigned iline = 0; iline < x_coords.size(); ++iline) {
@@ -173,7 +202,7 @@ private:
       text.SetTextFont(43);
       text.SetTextSize(12);
 
-      if (name.Contains("HD")) {
+      if (name.Contains("HD") || name.Contains("MH")) {
         double theta1 = 0.;
         double theta2 = 4 * TMath::Pi() / 3.;
         double theta3 = 2 * TMath::Pi() / 3.;
@@ -204,7 +233,7 @@ private:
           text.DrawText(x, y, v_texts[i]);
         }
 
-      } else if (name.Contains("LD")) {  // LD
+      } else if (name.Contains("LD") || name.Contains("ML") || name.Contains("_module")) {  // LD
         double theta1 = -TMath::Pi() / 3.;
         double theta2 = TMath::Pi() / 3.;
         double theta3 = TMath::Pi();

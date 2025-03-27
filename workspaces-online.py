@@ -14,11 +14,29 @@
 # (I.e.: Don't make a mess.)
 
 # DQM workspaces:
-server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
+server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
+                 # 'HGCAL/Layouts/00-Modules',
+                 # 'HGCAL/Layouts/01-Digis',
+                 "HGCAL/Digis/econdPayload",
+                 "HGCAL/Digis/econdQualityH",
+                 "HGCAL/Digis/cbQualityH",
+                 "HGCAL/Modules/hex_avgadc_module_0",
+                 "HGCAL/Modules/hex_avgadc_module_1",
+                 "HGCAL/Modules/hex_avgadc_module_2",
+                 "HGCAL/Modules/hex_avgadc_module_3",
+                 "HGCAL/Modules/hex_avgadc_module_4",
+                 "HGCAL/Modules/hex_avgadc_module_5",
+                 "HGCAL/Digis/adc_module_0",
+                 "HGCAL/Digis/adc_module_1",
+                 "HGCAL/Digis/adc_module_2",
+                 "HGCAL/Digis/adc_module_3",
+                 "HGCAL/Digis/adc_module_4",
+                 "HGCAL/Digis/adc_module_5",
+                )
 
+#server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
 #server.workspace('DQMSummary', 1, 'Summaries', 'Reports')
-
-server.workspace('DQMShift',   2, 'Summaries', 'Shift')
+#server.workspace('DQMShift',   2, 'Summaries', 'Shift')
 
 #server.workspace('DQMContent', 3, 'Summaries', 'Info', '^Info/', '',
 #                 'Info/Layouts/1 - HV and Beam Status per LumiSection',
@@ -29,12 +47,6 @@ server.workspace('DQMShift',   2, 'Summaries', 'Shift')
 #                )
 #
 #server.workspace('DQMContent', 4, 'Summaries', 'Everything', '^', '^')
-
-server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
-                 'HGCAL/Layouts/00-Summary_Map',
-                 'HGCAL/Layouts/01-ChannelId',
-                 'HGCAL/Layouts/02-Pedestal',
-                )
 
 # # Trigger workspaces:
 # server.workspace('DQMContent', 10, 'Trigger', 'L1T', '^(L1T|L1T2016)/', '',
@@ -298,10 +310,6 @@ server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
 #                  'Castor/Layouts/02 - Channel-wise timing',
 #                  'Castor/Layouts/02b - Channel-wise timing (rms)',
 #                  'Castor/Layouts/Digi/05 - DigiSize',
-#                 )
-# 
-# server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
-#                  'HGCAL/Layouts/01 - Pedestal in ADC',
 #                 )
 # 
 # # Muons workspaces:
