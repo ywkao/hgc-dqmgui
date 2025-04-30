@@ -27,8 +27,8 @@ cd hgc-dqmgui/
 
 Commands to upload a file to the built GUI:
 ```
-scp /afs/cern.ch/user/y/ykao/work/public/dqm_gui_related/DQM_V0001_HGCAL_R000123456.root {YOUR_VM}:~/
-ssh {YOUR_VM}
+scp /afs/cern.ch/user/y/ykao/work/public/dqm_gui_related/DQM_V0001_HGCAL_R000123456.root root@{YOUR_VM}:~/
+ssh root@{YOUR_VM}
 source /data/srv/current/apps/dqmgui/128/etc/profile.d/env.sh
 visDQMUpload http://{YOUR_VM}.cern.ch:8070/dqm/online-dev DQM_V0001_HGCAL_R000123456.root
 ```
