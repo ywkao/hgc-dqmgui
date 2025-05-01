@@ -1,6 +1,13 @@
 # HGCAL DQM GUI Layout and Plugins
 
 This repository tracks CMS DQM GUI layouts and rendering plugins for HGCAL system tests.
+
+### Contributing
+
+For changes to this repository, please submit pull requests directly to this project.
+
+### Integration
+
 To integrate into the official CMS DQM GUI for monitoring at the CMS control room (Point 5), create a pull request at:
 https://github.com/dmwm/deployment
 
