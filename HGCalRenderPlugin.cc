@@ -24,13 +24,19 @@
 class HGCalRenderPlugin : public DQMRenderPlugin {
 public:
   virtual bool applies(const VisDQMObject &o, const VisDQMImgInfo &) {
-    if (o.name.find("HGCAL/Modules") != std::string::npos)
+    if (o.name.find("HGCAL") != std::string::npos)
+      return true;
+    else if (o.name.find("HGCAL/Modules") != std::string::npos)
       return true;
     else if (o.name.find("HGCAL/Layers") != std::string::npos)
       return true;
     else if (o.name.find("HGCAL/Digis") != std::string::npos)
       return true;
     else if (o.name.find("HGCAL/EndCap") != std::string::npos)
+      return true;
+    else if (o.name.find("HGCAL/FED") != std::string::npos)
+      return true;
+    else if (o.name.find("HGCAL/Quick") != std::string::npos)
       return true;
     else
       return false;
@@ -41,10 +47,13 @@ public:
     c->SetRightMargin(0.15);
 
     if (dynamic_cast<TH2Poly *>(o.object)) {
+      c->SetLeftMargin(0.10);
       preDrawHex(o);
     } else if (dynamic_cast<TH2F *>(o.object)) {
+      c->SetLeftMargin(0.20);
       preDrawTH2(c, o);
     } else if (dynamic_cast<TH1F *>(o.object)) {
+      c->SetLeftMargin(0.10);
       preDrawTH1(c, o);
     }
   }
