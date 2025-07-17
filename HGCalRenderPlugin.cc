@@ -123,24 +123,13 @@ private:
     TH2F *obj = dynamic_cast<TH2F *>(o.object);
     assert(obj);
 
-    // This applies to all
+    // Set up canvas
     gStyle->SetCanvasBorderMode(0);
     gStyle->SetCanvasColor(kWhite);
     gStyle->SetPadBorderMode(0);
     gStyle->SetPadBorderSize(0);
-    gStyle->SetOptStat(10);
 
-    if ( (o.name.find("econd") != std::string::npos) || (o.name.find("Quality") != std::string::npos) ) {
-      gStyle->SetOptStat(10);
-      gStyle->SetPalette(kBird); // kCherry
-      // TColor::InvertPalette();
-      obj->SetStats(0);
-    } else {
-      gStyle->SetOptStat(1111);
-      gStyle->SetPalette(1);
-      obj->SetStats(kTRUE);
-    }
-
+    // Set up the histogram
     obj->SetOption("colz");
     obj->GetXaxis()->SetNdivisions(-510);
     obj->GetYaxis()->SetNdivisions(-510);
@@ -148,6 +137,33 @@ private:
     obj->GetYaxis()->CenterLabels();
     c->SetGridx();
     c->SetGridy();
+
+    // acquire hist name
+    TString name(obj->GetName());
+    bool isSpecificQualityHist = name.Contains("econdQualityLayer") || (name=="econdQuality") || (name=="econdQualityLS") || (name=="layerQualityLS");
+    bool isGeneralEcondOrQuality = (o.name.find("econd") != std::string::npos) || (o.name.find("Quality") != std::string::npos);
+
+    if (isSpecificQualityHist) {
+        Int_t colors[5] = {kGreen+1, kSpring+10, kOrange, kOrange+1, kRed};
+        gStyle->SetPalette(5, colors);
+        gStyle->SetOptStat(10);
+        gStyle->SetPaintTextFormat(".0f");
+
+        obj->SetMinimum(0.5);
+        obj->SetMaximum(5.5);
+        obj->SetMarkerSize(0.7);
+        obj->SetStats(0);
+
+    } else if (isGeneralEcondOrQuality) {
+        gStyle->SetOptStat(10);
+        gStyle->SetPalette(kBird);
+        obj->SetStats(0);
+
+    } else {
+        gStyle->SetOptStat(1111);
+        gStyle->SetPalette(1);
+        obj->SetStats(kTRUE);
+    }
 
   }  // end of preDrawTH2
 
