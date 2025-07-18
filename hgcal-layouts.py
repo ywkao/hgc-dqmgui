@@ -7,33 +7,27 @@ summary = "wafer map for hgcal"
 digis = "digis information"
 
 ################### Links to TOP Summary Histograms #################################
-hgcallayout(dqmitems, "01-econdPayload",
-          [{ 'path': "HGCAL/Digis/econdPayload", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "02-econdQualityH",
-          [{ 'path': "HGCAL/Digis/econdQualityH", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "03-cbQualityH",
-          [{ 'path': "HGCAL/Digis/cbQualityH", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "04-Module0-avgadc",
-          [{ 'path': "HGCAL/Modules/hex_avgadc_module_0", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "05-Module1-avgadc",
-          [{ 'path': "HGCAL/Modules/hex_avgadc_module_1", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "06-Module2-avgadc",
-          [{ 'path': "HGCAL/Modules/hex_avgadc_module_2", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "07-Module3-avgadc",
-          [{ 'path': "HGCAL/Modules/hex_avgadc_module_3", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "08-Module4-avgadc",
-          [{ 'path': "HGCAL/Modules/hex_avgadc_module_4", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "09-Module5-avgadc",
-          [{ 'path': "HGCAL/Modules/hex_avgadc_module_5", 'description': summary + hgcallink }])
-hgcallayout(dqmitems, "10-digis0-adc",
-          [{ 'path': "HGCAL/Digis/adc_module_0", 'description': digis + hgcallink }])
-hgcallayout(dqmitems, "11-digis1-adc",
-          [{ 'path': "HGCAL/Digis/adc_module_1", 'description': digis + hgcallink }])
-hgcallayout(dqmitems, "12-digis2-adc",
-          [{ 'path': "HGCAL/Digis/adc_module_2", 'description': digis + hgcallink }])
-hgcallayout(dqmitems, "13-digis3-adc",
-          [{ 'path': "HGCAL/Digis/adc_module_3", 'description': digis + hgcallink }])
-hgcallayout(dqmitems, "14-digis4-adc",
-          [{ 'path': "HGCAL/Digis/adc_module_4", 'description': digis + hgcallink }])
-hgcallayout(dqmitems, "15-digis5-adc",
-          [{ 'path': "HGCAL/Digis/adc_module_5", 'description': digis + hgcallink }])
+hgcallayout(dqmitems, "01-econdQuality",
+          [{ 'path': "HGCAL/econdQuality", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "02-time_stamp",
+          [{ 'path': "HGCAL/time_stamp", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "03-Layer1-Cassette1-econdQuality",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/econdQualityCassette_1", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "04-Layer1-Cassette1-econdPayload",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/econdPayloadCassette_1", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "05-Layer1-Cassette1-hex_avgadc",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "06-Layer1-Cassette1-hex_occupancy",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_occupancy_layer_1", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "07-Layer1-Cassette1-hex_stdadc",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_stdadc_layer_1", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "08-Layer41-Cassette2-econdQuality",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_41/Cassette_2/econdQualityCassette_2", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "09-Layer41-Cassette2-econdPayload",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_41/Cassette_2/econdPayloadCassette_2", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "10-Layer41-Cassette2-hex_avgadc",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_41/Cassette_2/hex_avgadc_layer_41", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "11-Layer41-Cassette2-hex_occupancy",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_41/Cassette_2/hex_occupancy_layer_41", 'description': summary + hgcallink }])
+hgcallayout(dqmitems, "12-Layer41-Cassette2-hex_stdadc",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_41/Cassette_2/hex_stdadc_layer_41", 'description': summary + hgcallink }])

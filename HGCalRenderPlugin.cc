@@ -44,8 +44,10 @@ public:
 
   virtual void preDraw(TCanvas *c, const VisDQMObject &o, const VisDQMImgInfo &, VisDQMRenderInfo &) {
     c->cd();
+    // default values
     c->SetRightMargin(0.15);
 
+    // customization for each ME type
     if (dynamic_cast<TH2Poly *>(o.object)) {
       c->SetLeftMargin(0.10);
       preDrawHex(o);
@@ -59,10 +61,15 @@ public:
   }
 
   virtual void postDraw(TCanvas *c, const VisDQMObject &o, const VisDQMImgInfo &) {
-    if (dynamic_cast<TH2 *>(o.object))
+    if (dynamic_cast<TH2 *>(o.object)) {
+      gStyle->SetTextSize();
       postDrawTH2(c, o);
-    if (dynamic_cast<TH2Poly *>(o.object))
+    } else if (dynamic_cast<TH2Poly *>(o.object)) {
+      gStyle->SetTextSize();
       postDrawHex(c, o);
+    } else if (dynamic_cast<TString *>(o.object)) {
+      gStyle->SetTextSize(0.20);
+    }
   }
 
 private:
