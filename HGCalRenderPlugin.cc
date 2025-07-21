@@ -117,8 +117,6 @@ private:
     }
 
     obj->SetStats(kFALSE);
-    obj->GetXaxis()->CenterLabels();
-    obj->GetYaxis()->CenterLabels();
 
     //c->SetTicks(1,1);
     //c->SetGridx();
@@ -140,8 +138,6 @@ private:
     obj->SetOption("colz");
     obj->GetXaxis()->SetNdivisions(-510);
     obj->GetYaxis()->SetNdivisions(-510);
-    obj->GetXaxis()->CenterLabels();
-    obj->GetYaxis()->CenterLabels();
     c->SetGridx();
     c->SetGridy();
 
