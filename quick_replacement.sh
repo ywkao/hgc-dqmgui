@@ -15,6 +15,12 @@ function update(){
 if [[ ! -d "${backup}" ]]; then
     mkdir -p ${backup}
     cp -p "/data/srv/current/config/dqmgui/workspaces-online.py" ${backup}
+
+    cd /data/srv/current/config/dqmgui/style/
+    mkdir backup
+    mv *.* backup/
+    mv backup/utils.* .
+    cd -
 fi
 
 # update rendering plugins for HGCAL DQM plots
