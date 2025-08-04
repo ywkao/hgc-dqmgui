@@ -26,6 +26,7 @@ Commands to customize the CMS DQM GUI for HGCAL layout:
 ```
 git clone https://github.com/CMS-HGCAL/hgc-dqmgui.git
 cd hgc-dqmgui/
+git checkout tb2024-config
 ./quick_replacement.sh
 /data/srv/current/config/dqmgui/manage -f online start "I did read documentation"
 ```
