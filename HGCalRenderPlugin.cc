@@ -136,14 +136,15 @@ private:
 
     // Set up the histogram
     obj->SetOption("colz");
-    obj->GetXaxis()->SetNdivisions(-510);
-    obj->GetYaxis()->SetNdivisions(-510);
+    obj->GetXaxis()->SetNdivisions(510);
+    obj->GetYaxis()->SetNdivisions(510);
     c->SetGridx();
     c->SetGridy();
 
     // acquire hist name
     TString name(obj->GetName());
     bool isSpecificQualityHist = name.Contains("econdQualityLayer") || (name=="econdQuality") || (name=="econdQualityLS") || (name=="layerQualityLS");
+    bool isCorrelation = name.Contains("Corr");
     bool isGeneralEcondOrQuality = (o.name.find("econd") != std::string::npos) || (o.name.find("Quality") != std::string::npos);
 
     if (isSpecificQualityHist) {
@@ -155,6 +156,10 @@ private:
         obj->SetMinimum(0.5);
         obj->SetMaximum(5.5);
         obj->SetMarkerSize(0.7);
+        obj->SetStats(0);
+
+    } else if (isCorrelation) {
+        gStyle->SetPalette(1);
         obj->SetStats(0);
 
     } else if (isGeneralEcondOrQuality) {
