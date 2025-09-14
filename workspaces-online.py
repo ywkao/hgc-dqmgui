@@ -16,17 +16,15 @@
 # DQM workspaces:
 server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
                  "HGCAL/econdQuality",
+                 "HGCAL/layer_summary_avgadc",
+                 "HGCAL/layer_summary_avgcm",
+                 "HGCAL/layer_summary_avgtoa",
+                 "HGCAL/layer_summary_avgtot",
+                 "HGCAL/layer_summary_deltaadc",
+                 "HGCAL/layer_summary_n_vacant_channels",
+                 "HGCAL/layer_summary_occupancy",
+                 "HGCAL/layer_summary_stdadc",
                  "HGCAL/time_stamp",
-                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/econdQualityCassette_1",
-                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/econdPayloadCassette_1",
-                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1",
-                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_occupancy_layer_1",
-                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_stdadc_layer_1",
-                 "HGCAL/EndCap_Minus/Layer_41/Cassette_2/econdQualityCassette_2",
-                 "HGCAL/EndCap_Minus/Layer_41/Cassette_2/econdPayloadCassette_2",
-                 "HGCAL/EndCap_Minus/Layer_41/Cassette_2/hex_avgadc_layer_41",
-                 "HGCAL/EndCap_Minus/Layer_41/Cassette_2/hex_occupancy_layer_41",
-                 "HGCAL/EndCap_Minus/Layer_41/Cassette_2/hex_stdadc_layer_41",
                 )
 
 #server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
