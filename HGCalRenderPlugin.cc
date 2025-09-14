@@ -69,6 +69,10 @@ public:
       postDrawHex(c, o);
     } else if (dynamic_cast<TString *>(o.object)) {
       gStyle->SetTextSize(0.20);
+    } else if (dynamic_cast<TH1F *>(o.object)) {
+      gStyle->SetOptStat("nemruo"); // including underflow and overflow
+      c->Modified();
+      c->Update();
     }
   }
 
