@@ -24,7 +24,6 @@ server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
                  "HGCAL/layer_summary_n_vacant_channels",
                  "HGCAL/layer_summary_occupancy",
                  "HGCAL/layer_summary_stdadc",
-                 "HGCAL/time_stamp",
                 )
 
 #server.workspace('DQMQuality', 0, 'Summaries', 'Summary')

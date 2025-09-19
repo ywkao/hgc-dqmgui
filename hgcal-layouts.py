@@ -25,5 +25,3 @@ hgcallayout(dqmitems, "08-layer_summary_occupancy",
           [{ 'path': "HGCAL/layer_summary_occupancy", 'description': quality + hgcallink }])
 hgcallayout(dqmitems, "09-layer_summary_stdadc",
           [{ 'path': "HGCAL/layer_summary_stdadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "10-time_stamp",
-          [{ 'path': "HGCAL/time_stamp", 'description': quality + hgcallink }])
