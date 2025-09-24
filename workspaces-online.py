@@ -15,15 +15,14 @@
 
 # DQM workspaces:
 server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
-                 "HGCAL/econdQuality",
-                 "HGCAL/layer_summary_avgadc",
-                 "HGCAL/layer_summary_avgcm",
-                 "HGCAL/layer_summary_avgtoa",
-                 "HGCAL/layer_summary_avgtot",
-                 "HGCAL/layer_summary_deltaadc",
-                 "HGCAL/layer_summary_n_vacant_channels",
-                 "HGCAL/layer_summary_occupancy",
-                 "HGCAL/layer_summary_stdadc",
+                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1",
+                 "HGCAL/EndCap_Minus/Layer_2/Cassette_1/hex_avgadc_layer_2",
+                 "HGCAL/EndCap_Minus/Layer_3/Cassette_1/hex_avgadc_layer_3",
+                 "HGCAL/EndCap_Minus/Layer_4/Cassette_1/hex_avgadc_layer_4",
+                 "HGCAL/EndCap_Minus/Layer_5/Cassette_1/hex_avgadc_layer_5",
+                 "HGCAL/EndCap_Minus/Layer_6/Cassette_1/hex_avgadc_layer_6",
+                 "HGCAL/EndCap_Minus/Layer_7/Cassette_1/hex_avgadc_layer_7",
+                 "HGCAL/EndCap_Minus/Layer_8/Cassette_1/hex_avgadc_layer_8",
                 )
 
 #server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
