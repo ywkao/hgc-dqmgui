@@ -80,6 +80,7 @@ private:
   void preDrawTH1(TCanvas *c __attribute__((unused)), const VisDQMObject &o) {
     TH1 *obj = dynamic_cast<TH1 *>(o.object);
     assert(obj);
+    obj->SetOption("hist");
   }
 
   void preDrawHex(const VisDQMObject &o) {
