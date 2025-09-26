@@ -89,7 +89,8 @@ private:
     assert(obj);
 
     //gStyle->SetPalette(kViridis);
-    gStyle->SetPalette(kBird);
+    gStyle->SetPalette(kCherry);
+    TColor::InvertPalette();
     obj->SetOption("colz");
 
     //customize display of hex plots
@@ -164,17 +165,20 @@ private:
         obj->SetStats(0);
 
     } else if (isCorrelation) {
-        gStyle->SetPalette(1);
+        gStyle->SetPalette(kCherry);
+        TColor::InvertPalette();
         obj->SetStats(0);
 
     } else if (isGeneralEcondOrQuality) {
         gStyle->SetOptStat(10);
-        gStyle->SetPalette(kBird);
+        gStyle->SetPalette(kCherry);
+        TColor::InvertPalette();
         obj->SetStats(0);
 
     } else {
         gStyle->SetOptStat(1111);
-        gStyle->SetPalette(1);
+        gStyle->SetPalette(kCherry);
+        TColor::InvertPalette();
         obj->SetStats(kTRUE);
     }
 
