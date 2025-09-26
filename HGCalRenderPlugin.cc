@@ -88,8 +88,23 @@ private:
     TString name(obj->GetName());
     assert(obj);
 
-    //gStyle->SetPalette(kViridis);
-    gStyle->SetPalette(kCherry);
+    // static bool first_time = true;
+    // if(first_time) {
+    //     std::cout << "[DEBUG-rendering] name = " << name.Data() << std::endl;
+    //     first_time = false;
+    // }
+    //
+    if (name.Contains("module_avgcm_layer_9")) {
+        std::cout << "[DEBUG-rendering] name = " << name.Data();
+        if (name.Contains("^module_")) {
+            std::cout << "fetched!";
+        } else {
+            std::cout << "NOT fetched!";
+        }
+        std::cout << std::endl;
+    }
+
+    gStyle->SetPalette(kSunset);
     TColor::InvertPalette();
     obj->SetOption("colz");
 
@@ -112,6 +127,11 @@ private:
       gStyle->SetPaintTextFormat(".0f");
       obj->SetMarkerSize(0.7);
       obj->SetOption("colz");
+    } else if (name.Contains("^module_")) {
+      // hexagonal plots at layer-level
+      gStyle->SetPaintTextFormat(".0f");
+      obj->SetMarkerSize(2.0);
+      obj->SetOption("colztext");
     } else if (name.Contains("_layer_")) {
       gStyle->SetPaintTextFormat(".2e");
       obj->SetMarkerSize(2.0);
@@ -165,21 +185,21 @@ private:
         obj->SetStats(0);
 
     } else if (isCorrelation) {
-        gStyle->SetPalette(kCherry);
+        gStyle->SetPalette(kSunset);
         TColor::InvertPalette();
         obj->SetStats(0);
 
     } else if (isGeneralEcondOrQuality) {
         gStyle->SetOptStat(10);
-        gStyle->SetPalette(kCherry);
+        gStyle->SetPalette(kSunset);
         TColor::InvertPalette();
         obj->SetStats(0);
 
     } else {
         gStyle->SetOptStat(1111);
-        gStyle->SetPalette(kCherry);
+        gStyle->SetPalette(kSunset);
         TColor::InvertPalette();
-        obj->SetStats(kTRUE);
+        obj->SetStats(0);
     }
 
   }  // end of preDrawTH2
