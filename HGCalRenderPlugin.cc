@@ -88,22 +88,6 @@ private:
     TString name(obj->GetName());
     assert(obj);
 
-    // static bool first_time = true;
-    // if(first_time) {
-    //     std::cout << "[DEBUG-rendering] name = " << name.Data() << std::endl;
-    //     first_time = false;
-    // }
-    //
-    if (name.Contains("module_avgcm_layer_9")) {
-        std::cout << "[DEBUG-rendering] name = " << name.Data();
-        if (name.BeginsWith("module_")) {
-            std::cout << "fetched!";
-        } else {
-            std::cout << "NOT fetched!";
-        }
-        std::cout << std::endl;
-    }
-
     gStyle->SetPalette(kSunset);
     TColor::InvertPalette();
     obj->SetOption("colz");
@@ -131,9 +115,10 @@ private:
       gStyle->SetPaintTextFormat(".0f");
       obj->SetMarkerSize(0.7);
       obj->SetOption("colz");
-    } else if (name.BeginsWith("module_")) {
-      // hexagonal plots at layer-level
-      gStyle->SetPaintTextFormat(".0f");
+    } else if (name.BeginsWith("module_") || name.BeginsWith("hex_avgPayloadLayer") || name.BeginsWith("hex_stdPayloadLayer")) {
+      // display text info for hexagonal plots at layer-level
+      if (name.Contains("std")) { gStyle->SetPaintTextFormat(".2f"); }
+      else { gStyle->SetPaintTextFormat(".0f"); }
       obj->SetMarkerSize(2.0);
       obj->SetOption("colztext");
     } else if (name.Contains("_layer_")) {
