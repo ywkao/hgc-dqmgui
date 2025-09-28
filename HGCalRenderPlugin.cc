@@ -12,6 +12,7 @@
 #include "TMath.h"
 #include "TText.h"
 #include "TPaletteAxis.h"
+#include "TPolyMarker.h"
 #include "TH2F.h"
 #include "TLine.h"
 #include "TList.h"
@@ -114,6 +115,22 @@ private:
       // resctrict noize range in [0.0, 2.0]
       obj->SetMinimum(0.0);
       obj->SetMaximum(2.0);
+
+      TList *functions = obj->GetListOfFunctions();
+      if (functions) {
+          TIter next(functions);
+          TObject *funcObj;
+          while ((funcObj = next())) {
+              if (funcObj->InheritsFrom("TPolyMarker")) {
+                  TPolyMarker *marker = (TPolyMarker*)funcObj;
+                  marker->SetMarkerSize(1.5);
+                  marker->SetMarkerColor(kWhite);
+                  marker->SetMarkerStyle(52);
+                  break; // assume only one TPolyMarker
+              }
+          }
+      }
+
     } else if (name.Contains("hex_channelId") || name.Contains("hex_hgcrocPin") || name.Contains("hex_sicellPadId")) {
       gStyle->SetPaintTextFormat(".0f");
       obj->SetMarkerSize(0.7);
