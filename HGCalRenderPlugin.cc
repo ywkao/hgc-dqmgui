@@ -100,8 +100,11 @@ private:
       obj->SetMinimum(0.5); // ensure color scale for grade quality starts at 0.5
       obj->SetMaximum(5.5); // ensure color scale for grade quality ends at 5.5
 
-      // TGaxis *zaxis = palette->GetAxis();
-      // zaxis->SetLabelSize(0);  // Hide numbers
+      // Hide z-labels & Add title
+      obj->GetZaxis()->SetLabelSize(0);
+      obj->GetZaxis()->SetTickLength(0);
+      obj->GetZaxis()->SetTitle("Issue Severity");
+      obj->GetZaxis()->SetTitleSize(0.04);
 
       gStyle->SetPaintTextFormat(".0f");
       obj->SetMarkerSize(0.7);
@@ -172,6 +175,12 @@ private:
         obj->SetMaximum(5.5);
         obj->SetMarkerSize(0.7);
         obj->SetStats(0);
+
+        // Hide z-labels & Add title
+        obj->GetZaxis()->SetLabelSize(0);
+        obj->GetZaxis()->SetTickLength(0);
+        obj->GetZaxis()->SetTitle("Issue Severity");
+        obj->GetZaxis()->SetTitleSize(0.04);
 
     } else if (isCorrelation) {
         gStyle->SetPalette(kSunset);
