@@ -96,7 +96,7 @@ private:
     //
     if (name.Contains("module_avgcm_layer_9")) {
         std::cout << "[DEBUG-rendering] name = " << name.Data();
-        if (name.Contains("^module_")) {
+        if (name.BeginsWith("module_")) {
             std::cout << "fetched!";
         } else {
             std::cout << "NOT fetched!";
@@ -123,11 +123,15 @@ private:
       obj->SetMarkerSize(0.7);
       obj->SetOption("colz");
 
+    } else if (name.Contains("hex_stdadc")) {
+      // resctrict noize range in [0.0, 2.0]
+      obj->SetMinimum(0.0);
+      obj->SetMaximum(2.0);
     } else if (name.Contains("hex_channelId") || name.Contains("hex_hgcrocPin") || name.Contains("hex_sicellPadId")) {
       gStyle->SetPaintTextFormat(".0f");
       obj->SetMarkerSize(0.7);
       obj->SetOption("colz");
-    } else if (name.Contains("^module_")) {
+    } else if (name.BeginsWith("module_")) {
       // hexagonal plots at layer-level
       gStyle->SetPaintTextFormat(".0f");
       obj->SetMarkerSize(2.0);
