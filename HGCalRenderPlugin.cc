@@ -125,7 +125,7 @@ private:
                   TPolyMarker *marker = (TPolyMarker*)funcObj;
                   marker->SetMarkerSize(1.5);
                   marker->SetMarkerColor(kWhite);
-                  marker->SetMarkerStyle(52);
+                  marker->SetMarkerStyle(5); // or 52
                   break; // assume only one TPolyMarker
               }
           }

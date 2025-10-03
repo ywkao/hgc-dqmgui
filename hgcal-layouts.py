@@ -55,3 +55,54 @@ hgcallayout(dqmitems, "Noise - Layer 11: ADC Standard Deviation",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/hex_stdadc_layer_11", 'description': quality + hgcallink }])
 hgcallayout(dqmitems, "Noise - Layer 12: ADC Standard Deviation",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/hex_stdadc_layer_12", 'description': quality + hgcallink }])
+
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 1",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 2",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 3",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 4",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 5",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 6",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 7",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0195/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 8",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0193/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 9",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0181/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 10",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0182/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 11",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/seedadcvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ADC @ Layer 12",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/seedadcvstrigtime", 'description': quality + hgcallink }])
+
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 1",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 2",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 3",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 4",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 5",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 6",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 7",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0195/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 8",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0193/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 9",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0181/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 10",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0182/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 11",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/seedtoavstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "Trigger Phase - ToA @ Layer 12",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/seedtoavstrigtime", 'description': quality + hgcallink }])
+
