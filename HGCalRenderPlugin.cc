@@ -13,6 +13,7 @@
 #include "TText.h"
 #include "TPaletteAxis.h"
 #include "TPolyMarker.h"
+#include "TProfile.h"
 #include "TH2F.h"
 #include "TLine.h"
 #include "TList.h"
@@ -225,7 +226,8 @@ private:
 
     // post draw for each displayed plots
     TString name(obj->GetName());
-    obj->ProfileX((name+"_profile").Data(), 1, -1, "ds");
+    TProfile *prof = obj->ProfileX((name+"_profile").Data(), 1, -1, "s");
+    prof->Draw("same");
 
   }  // End of postDrawTH2
 
