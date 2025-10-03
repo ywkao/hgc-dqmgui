@@ -222,7 +222,10 @@ private:
   void postDrawTH2(TCanvas *c __attribute__((unused)), const VisDQMObject &o) {
     TH2 *obj = dynamic_cast<TH2 *>(o.object);
     assert(obj);
+
     // post draw for each displayed plots
+    TString name(obj->GetName());
+    obj->ProfileX((name+"_profile").Data(), 1, -1, "ds");
 
   }  // End of postDrawTH2
 
