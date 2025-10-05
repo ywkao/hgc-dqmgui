@@ -244,3 +244,81 @@ hgcallayout(dqmitems, "TOA/TOA @ Layer 11",
 hgcallayout(dqmitems, "TOA/TOA @ Layer 12",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/toa", 'description': quality + hgcallink }])
 
+#----------------------------------------------------------------------------------------------------
+# RecHits
+#----------------------------------------------------------------------------------------------------
+hgcallayout(dqmitems, "RecHits/Layer 1: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 2: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 3: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 4: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 5: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 6: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 7: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 8: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 9: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 10: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 11: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Layer 12: RecHit Energy vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/rechitenergyvstrigtime", 'description': quality + hgcallink }])
+
+hgcallayout(dqmitems, "RecHits/ Layer 1: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 2: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 3: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 4: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 5: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 6: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 7: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 8: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 9: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 10: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 11: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/rechittimevstrigtime", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/ Layer 12: RecHit Time vs. TrigPhase",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/rechittimevstrigtime", 'description': quality + hgcallink }])
+
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 1",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 2",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 3",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 4",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 5",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 6",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 7",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 8",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 9",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 10",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 11",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/rechittimevsenergy", 'description': quality + hgcallink }])
+hgcallayout(dqmitems, "RecHits/Time vs. Energy @ Layer 12",
+          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/rechittimevsenergy", 'description': quality + hgcallink }])
+
