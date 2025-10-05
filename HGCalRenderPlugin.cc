@@ -239,9 +239,12 @@ private:
   void postDrawTH2(TCanvas *c __attribute__((unused)), const VisDQMObject &o) {
     TH2 *obj = dynamic_cast<TH2 *>(o.object);
     assert(obj);
-
-    // post draw for each displayed plots
     TString name(obj->GetName());
+
+    bool isSpecificQualityHist = name.Contains("econdQualityLayer") || (name=="econdQuality") || (name=="econdQualityLS") || (name=="layerQualityLS");
+    if(isSpecificQualityHist) return; //  no need to add a profile
+
+    // adding profile
     TProfile *prof = obj->ProfileX((name+"_profile").Data(), 1, -1, "s");
     prof->Draw("same");
 
