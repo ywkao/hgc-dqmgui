@@ -83,7 +83,7 @@ public:
       bool isProfileAvgADC = name.Contains("avgadc");
       if(!isProfileAvgADC) return;
 
-      TH1D *h1d = obj->ProfileX((name+"_h1d").Data(), "e");
+      TH1D *h1d = obj->ProjectionX((name+"_h1d").Data(), "e");
       if (!gPad || !gPad->FindObject(h1d)) {
          h1d->Draw();
       } else {
