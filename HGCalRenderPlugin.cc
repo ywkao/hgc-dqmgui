@@ -75,6 +75,20 @@ public:
       gStyle->SetOptStat("nemruo"); // including underflow and overflow
       c->Modified();
       c->Update();
+    } else if (dynamic_cast<TProfile *>(o.object)) {
+      TProfile *obj = dynamic_cast<TProfile *>(o.object);
+      assert(obj);
+      TString name(obj->GetName());
+
+      bool isProfileAvgADC = name.Contains("avgadc");
+      if(!isProfileAvgADC) return;
+
+      TH1D *h1d = obj->ProfileX((name+"_h1d").Data(), "e");
+      if (!gPad || !gPad->FindObject(h1d)) {
+         h1d->Draw();
+      } else {
+         h1d->Paint();
+      }
     }
   }
 
