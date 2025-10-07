@@ -9,7 +9,7 @@ digis = "digis information"
 tb_modules = [
     'ML_F3WC_IH0197', 'ML_F3WC_IH0196', 'ML_F3WC_IH0198', 'ML_F3WC_IH0190',
     'ML_F3WC_IH0192', 'ML_F3WC_IH0191', 'ML_F3WC_IH0194', 'ML_F3WC_IH0182',
-    'ML_F3WC_IH0180', 'ML_F3WC_IH0199'
+    'ML_F3WC_IH0180', 'ML_F3WC_IH0199', 'ML_NA',          'ML_NA'
 ]
 
 
