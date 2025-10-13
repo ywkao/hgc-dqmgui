@@ -255,7 +255,7 @@ private:
     assert(obj);
     TString name(obj->GetName());
 
-    bool isSpecificQualityHist = name.Contains("econdQualityLayer") || (name=="econdQuality") || (name=="econdQualityLS") || (name=="layerQualityLS");
+    bool isSpecificQualityHist = name.Contains("Quality") || (name=="econd_lastLS");
     if(isSpecificQualityHist) return; //  no need to add a profile
 
     // adding profile
