@@ -6,6 +6,13 @@ quality = "summary of module status"
 summary = "wafer map for hgcal"
 digis = "digis information"
 
+tb_modules = [
+    'ML_F3WC_IH0197', 'ML_F3WC_IH0196', 'ML_F3WC_IH0198', 'ML_F3WC_IH0190',
+    'ML_F3WC_IH0192', 'ML_F3WC_IH0191', 'ML_F3WC_IH0194', 'ML_F3WC_IH0182',
+    'ML_F3WC_IH0180', 'ML_F3WC_IH0199', 'ML_NA',          'ML_NA'
+]
+
+
 ################### Links to TOP Summary Histograms #################################
 hgcallayout(dqmitems, "Layer 1: Average ADC",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1", 'description': quality + hgcallink }])
@@ -60,83 +67,23 @@ hgcallayout(dqmitems, "Noise - Layer 12: ADC Standard Deviation",
 #----------------------------------------------------------------------------------------------------
 # Trigger Phase
 #----------------------------------------------------------------------------------------------------
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 1",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 2",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 3",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 4",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 5",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 6",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 7",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0194/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 8",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0182/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 9",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0180/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 10",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0199/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 11",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/seedadcvstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ADC @ Layer 12",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/seedadcvstrigtime", 'description': quality + hgcallink }])
+for i in range(12):
+    layer = i+1
+    hgcallayout(dqmitems, f"TrigPhase/Trigger Phase - ADC @ Layer {layer}",
+          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/seedadcvstrigtime", 'description': quality + hgcallink }])
 
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 1",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 2",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 3",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 4",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 5",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 6",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 7",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0194/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 8",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0182/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 9",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0180/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 10",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0199/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 11",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/seedtoavstrigtime", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TrigPhase/Trigger Phase - ToA @ Layer 12",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/seedtoavstrigtime", 'description': quality + hgcallink }])
+for i in range(12):
+    layer = i+1
+    hgcallayout(dqmitems,  f"TrigPhase/Trigger Phase - ToA @ Layer {layer}",
+                [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/seedtoavstrigtime", 'description': quality + hgcallink }])
 
 #----------------------------------------------------------------------------------------------------
 # ADC
 #----------------------------------------------------------------------------------------------------
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 1",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 2",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 3",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 4",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 5",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 6",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 7",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0194/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 8",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0182/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 9",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0180/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 10",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0199/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 11",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/avgadc", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "ADC/Average ADC @ Layer 12",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/avgadc", 'description': quality + hgcallink }])
+for i in range(12):
+    layer = i+1
+    hgcallayout(dqmitems, f"ADC/Average ADC @ Layer {layer}",
+                [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/avgadc", 'description': quality + hgcallink }])
 
 #----------------------------------------------------------------------------------------------------
 # TOT
@@ -166,36 +113,16 @@ hgcallayout(dqmitems, "TOT/Average TOT @ Layer 11",
 hgcallayout(dqmitems, "TOT/Average TOT @ Layer 12",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/hex_avgtot_layer_12", 'description': quality + hgcallink }])
 
-hgcallayout(dqmitems, "TOT/TOT @ Layer 1",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 2",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 3",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 4",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 5",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 6",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 7",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0194/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 8",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0182/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 9",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0180/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 10",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0199/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 11",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/tot", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOT/TOT @ Layer 12",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/tot", 'description': quality + hgcallink }])
+for i in range(12):
+    layer = i+1
+    hgcallayout(dqmitems, f"TOT/TOT @ Layer {layer}",
+          [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/tot", 'description': quality + hgcallink }])
 
 #----------------------------------------------------------------------------------------------------
 # TOA
 #----------------------------------------------------------------------------------------------------
 hgcallayout(dqmitems, "TOA/Average TOA @ Layer 1",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgtoa_layer_1", 'description': quality + hgcallink }])
+            [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgtoa_layer_1", 'description': quality + hgcallink }])
 hgcallayout(dqmitems, "TOA/Average TOA @ Layer 2",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/hex_avgtoa_layer_2", 'description': quality + hgcallink }])
 hgcallayout(dqmitems, "TOA/Average TOA @ Layer 3",
@@ -219,30 +146,10 @@ hgcallayout(dqmitems, "TOA/Average TOA @ Layer 11",
 hgcallayout(dqmitems, "TOA/Average TOA @ Layer 12",
           [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/hex_avgtoa_layer_12", 'description': quality + hgcallink }])
 
-hgcallayout(dqmitems, "TOA/TOA @ Layer 1",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/Module_ML_F3WC_IH0197/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 2",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_2/Cassette_1/Module_ML_F3WC_IH0196/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 3",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_3/Cassette_1/Module_ML_F3WC_IH0198/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 4",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_4/Cassette_1/Module_ML_F3WC_IH0190/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 5",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_5/Cassette_1/Module_ML_F3WC_IH0192/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 6",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_6/Cassette_1/Module_ML_F3WC_IH0191/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 7",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_7/Cassette_1/Module_ML_F3WC_IH0194/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 8",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_8/Cassette_1/Module_ML_F3WC_IH0182/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 9",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_9/Cassette_1/Module_ML_F3WC_IH0180/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 10",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_10/Cassette_1/Module_ML_F3WC_IH0199/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 11",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_11/Cassette_1/Module_ML_F3WC_IH0194/toa", 'description': quality + hgcallink }])
-hgcallayout(dqmitems, "TOA/TOA @ Layer 12",
-          [{ 'path': "HGCAL/EndCap_Minus/Layer_12/Cassette_1/Module_ML_F3WC_IH0183/toa", 'description': quality + hgcallink }])
+for i in range(12):
+    layer = i+1
+    hgcallayout(dqmitems, f"TOA/TOA @ Layer {layer}",
+                [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/toa", 'description': quality + hgcallink }])
 
 #----------------------------------------------------------------------------------------------------
 # RecHits
