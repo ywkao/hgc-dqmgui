@@ -12,72 +12,80 @@ tb_modules = [
     'ML_F3WC_IH0180', 'ML_F3WC_IH0199', 'ML_NA',          'ML_NA'
 ]
 
+# Layout configurations for DQM GUI with placeholders: {layer}, {module}
+# Format: (gui_display_path, dqm_histogram_path)
+# GUI path determines folder hierarchy under the "Layouts" button on the GUI
+# (e.g., "TOT/Plot Name" appears under TOT folder)
+layout_configs = [
+    #----------------------------------------------------------------------
+    # Wafer maps under Layouts
+    #----------------------------------------------------------------------
+    ("Layer {layer}: Average ADC",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_avgadc_layer_{layer}"),
+
+    ("Noise - Layer {layer}: ADC Standard Deviation",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_stdadc_layer_{layer}"),
+
+    #----------------------------------------------------------------------
+    # TrigPhase layouts
+    #----------------------------------------------------------------------
+    ("TrigPhase/Trigger Phase - ADC @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{module}/seedadcvstrigtime"),
+
+    ("TrigPhase/Trigger Phase - ToA @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{module}/seedtoavstrigtime"),
+
+    #----------------------------------------------------------------------
+    # ADC layouts
+    #----------------------------------------------------------------------
+    ("ADC/Average ADC @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{module}/avgadc"),
+
+    #----------------------------------------------------------------------
+    # TOT layouts
+    #----------------------------------------------------------------------
+    ("TOT/Average TOT @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_avgtot_layer_{layer}"),
+
+    ("TOT/TOT @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{module}/tot"),
+
+    #----------------------------------------------------------------------
+    # TOA layouts
+    #----------------------------------------------------------------------
+    ("TOA/Average TOA @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_avgtoa_layer_{layer}"),
+
+    ("TOA/TOA @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{module}/toa"),
+
+    #----------------------------------------------------------------------
+    # RecHits layouts
+    #----------------------------------------------------------------------
+    ("RecHits/Layer {layer}: RecHit Energy vs. TrigPhase",
+     "HGCAL/EndCap_Minus/Layer_{layer}/rechitenergyvstrigtime"),
+
+    ("RecHits/ Layer {layer}: RecHit Time vs. TrigPhase",
+     "HGCAL/EndCap_Minus/Layer_{layer}/rechittimevstrigtime"),
+
+    ("RecHits/Time vs. Energy @ Layer {layer}",
+     "HGCAL/EndCap_Minus/Layer_{layer}/rechittimevsenergy"),
+]
+
 ################### Links to TOP Summary Histograms #################################
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"Layer {layer}: Average ADC",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_avgadc_layer_{layer}", 'description': quality + hgcallink }])
 
-    hgcallayout(dqmitems, f"Noise - Layer {layer}: ADC Standard Deviation",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_stdadc_layer_{layer}", 'description': quality + hgcallink }])
-
-#----------------------------------------------------------------------------------------------------
-# Trigger Phase
-#----------------------------------------------------------------------------------------------------
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"TrigPhase/Trigger Phase - ADC @ Layer {layer}",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/seedadcvstrigtime", 'description': quality + hgcallink }])
+#------------------------------------------------------------------------------------------------------------------------
+# Example syntax to add one plot under ADC layout folder:
+#
+# hgcallayout(dqmitems, "ADC/Layer 1: Average ADC",
+#           [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1", 'description': quality + hgcallink }])
+#------------------------------------------------------------------------------------------------------------------------
 
 for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems,  f"TrigPhase/Trigger Phase - ToA @ Layer {layer}",
-                [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/seedtoavstrigtime", 'description': quality + hgcallink }])
+    layer = i + 1
+    module = tb_modules[i]
 
-#----------------------------------------------------------------------------------------------------
-# ADC
-#----------------------------------------------------------------------------------------------------
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"ADC/Average ADC @ Layer {layer}",
-                [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/avgadc", 'description': quality + hgcallink }])
-
-#----------------------------------------------------------------------------------------------------
-# TOT
-#----------------------------------------------------------------------------------------------------
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"TOT/Average TOT @ Layer {layer}",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_avgtot_layer_{layer}", 'description': quality + hgcallink }])
-
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"TOT/TOT @ Layer {layer}",
-          [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/tot", 'description': quality + hgcallink }])
-
-#----------------------------------------------------------------------------------------------------
-# TOA
-#----------------------------------------------------------------------------------------------------
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"TOA/Average TOA @ Layer {layer}",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/hex_avgtoa_layer_{layer}", 'description': quality + hgcallink }])
-
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"TOA/TOA @ Layer {layer}",
-                [{ 'path': f"HGCAL/EndCap_Minus/Layer_{layer}/Cassette_1/Module_{tb_modules[i]}/toa", 'description': quality + hgcallink }])
-
-#----------------------------------------------------------------------------------------------------
-# RecHits
-#----------------------------------------------------------------------------------------------------
-for i in range(12):
-    layer = i+1
-    hgcallayout(dqmitems, f"RecHits/Layer {layer}: RecHit Energy vs. TrigPhase",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/rechitenergyvstrigtime", 'description': quality + hgcallink }])
-
-    hgcallayout(dqmitems, f"RecHits/ Layer {layer}: RecHit Time vs. TrigPhase",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/rechittimevstrigtime", 'description': quality + hgcallink }])
-
-    hgcallayout(dqmitems, f"RecHits/Time vs. Energy @ Layer {layer}",
-          [{ 'path':  f"HGCAL/EndCap_Minus/Layer_{layer}/rechittimevsenergy", 'description': quality + hgcallink }])
+    for title_template, path_template in layout_configs:
+        title = title_template.format(layer=layer, module=module)
+        path = path_template.format(layer=layer, module=module)
+        hgcallayout(dqmitems, title, [{'path': path, 'description': quality + hgcallink}])
