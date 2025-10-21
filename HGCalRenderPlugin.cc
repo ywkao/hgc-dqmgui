@@ -63,10 +63,7 @@ public:
   }
 
   virtual void postDraw(TCanvas *c, const VisDQMObject &o, const VisDQMImgInfo &) {
-    if (dynamic_cast<TH2 *>(o.object)) {
-      gStyle->SetTextSize();
-      postDrawTH2(c, o);
-    } else if (dynamic_cast<TH2Poly *>(o.object)) {
+    if (dynamic_cast<TH2Poly *>(o.object)) {
       gStyle->SetTextSize();
       postDrawHex(c, o);
     } else if (dynamic_cast<TString *>(o.object)) {
@@ -75,6 +72,9 @@ public:
       gStyle->SetOptStat("nemruo"); // including underflow and overflow
       c->Modified();
       c->Update();
+    } else if (dynamic_cast<TH2 *>(o.object)) {
+      gStyle->SetTextSize();
+      postDrawTH2(c, o);
 //    } else if (dynamic_cast<TProfile *>(o.object)) {
 //      TProfile *obj = dynamic_cast<TProfile *>(o.object);
 //      assert(obj);
