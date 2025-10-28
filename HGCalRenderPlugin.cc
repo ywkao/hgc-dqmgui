@@ -168,21 +168,21 @@ private:
 
     obj->SetStats(kFALSE);
 
-    // zoom in for TB2025
-    double reduction_factor = 0.3; // 70% width
-    double xmin = obj->GetXaxis()->GetXmin();
-    double xmax = obj->GetXaxis()->GetXmax();
-    double center = (xmax+xmin)*0.5;
-    double x_new_min = xmin + (center-xmin)*reduction_factor;
-    double x_new_max = xmax + (center-xmax)*reduction_factor;
-    obj->GetXaxis()->SetRangeUser(x_new_min, x_new_max);
+    // // zoom in for TB2025
+    // double reduction_factor = 0.3; // 70% width
+    // double xmin = obj->GetXaxis()->GetXmin();
+    // double xmax = obj->GetXaxis()->GetXmax();
+    // double center = (xmax+xmin)*0.5;
+    // double x_new_min = xmin + (center-xmin)*reduction_factor;
+    // double x_new_max = xmax + (center-xmax)*reduction_factor;
+    // obj->GetXaxis()->SetRangeUser(x_new_min, x_new_max);
 
-    double ymin = obj->GetYaxis()->GetXmin();
-    double ymax = obj->GetYaxis()->GetXmax();
-    center = (ymax+ymin)*0.5;
-    double y_new_min = ymin + (center-ymin)*reduction_factor;
-    double y_new_max = ymax + (center-ymax)*reduction_factor;
-    obj->GetYaxis()->SetRangeUser(y_new_min, y_new_max);
+    // double ymin = obj->GetYaxis()->GetXmin();
+    // double ymax = obj->GetYaxis()->GetXmax();
+    // center = (ymax+ymin)*0.5;
+    // double y_new_min = ymin + (center-ymin)*reduction_factor;
+    // double y_new_max = ymax + (center-ymax)*reduction_factor;
+    // obj->GetYaxis()->SetRangeUser(y_new_min, y_new_max);
 
     //c->SetTicks(1,1);
     //c->SetGridx();

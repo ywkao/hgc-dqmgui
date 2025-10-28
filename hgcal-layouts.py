@@ -72,6 +72,20 @@ layout_configs = [
      "HGCAL/EndCap_Minus/Layer_{layer}/rechittimevsenergy"),
 ]
 
+cassette_layout = [
+
+    ("Module - Average ADC in a Cassette",
+     "HGCAL/EndCap_Minus/Layer_25/module_avgadc_layer_25"),
+
+    ("Channel - Average ADC",
+     "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_avgadc_layer_25"),
+
+    ("Channel - Noise (ADC Standard Deviation)",
+     "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_stdadc_layer_25"),
+]
+
+### "HGCAL/EventInfo/iRun"
+
 ################### Links to TOP Summary Histograms #################################
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -81,11 +95,14 @@ layout_configs = [
 #           [{ 'path': "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1", 'description': quality + hgcallink }])
 #------------------------------------------------------------------------------------------------------------------------
 
-for i in range(12):
-    layer = i + 1
-    module = tb_modules[i]
+for title, path in cassette_layout:
+    hgcallayout(dqmitems, title, [{'path': path, 'description': quality + hgcallink}])
 
-    for title_template, path_template in layout_configs:
-        title = title_template.format(layer=layer, module=module)
-        path = path_template.format(layer=layer, module=module)
-        hgcallayout(dqmitems, title, [{'path': path, 'description': quality + hgcallink}])
+### for i in range(12):
+###     layer = i + 1
+###     module = tb_modules[i]
+###
+###     for title_template, path_template in layout_configs:
+###         title = title_template.format(layer=layer, module=module)
+###         path = path_template.format(layer=layer, module=module)
+###         hgcallayout(dqmitems, title, [{'path': path, 'description': quality + hgcallink}])

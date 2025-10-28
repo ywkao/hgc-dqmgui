@@ -15,18 +15,9 @@
 
 # DQM workspaces:
 server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
-                 "HGCAL/EndCap_Minus/Layer_1/Cassette_1/hex_avgadc_layer_1",
-                 "HGCAL/EndCap_Minus/Layer_2/Cassette_1/hex_avgadc_layer_2",
-                 "HGCAL/EndCap_Minus/Layer_3/Cassette_1/hex_avgadc_layer_3",
-                 "HGCAL/EndCap_Minus/Layer_4/Cassette_1/hex_avgadc_layer_4",
-                 "HGCAL/EndCap_Minus/Layer_5/Cassette_1/hex_avgadc_layer_5",
-                 "HGCAL/EndCap_Minus/Layer_6/Cassette_1/hex_avgadc_layer_6",
-                 "HGCAL/EndCap_Minus/Layer_7/Cassette_1/hex_avgadc_layer_7",
-                 "HGCAL/EndCap_Minus/Layer_8/Cassette_1/hex_avgadc_layer_8",
-                 "HGCAL/EndCap_Minus/Layer_9/Cassette_1/hex_avgadc_layer_9",
-                 "HGCAL/EndCap_Minus/Layer_10/Cassette_1/hex_avgadc_layer_10",
-                 "HGCAL/EndCap_Minus/Layer_11/Cassette_1/hex_avgadc_layer_11",
-                 "HGCAL/EndCap_Minus/Layer_12/Cassette_1/hex_avgadc_layer_12",
+                 "HGCAL/EndCap_Minus/Layer_25/module_avgadc_layer_25",
+                 "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_avgadc_layer_25",
+                 "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_stdadc_layer_25",
                 )
 
 #server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
