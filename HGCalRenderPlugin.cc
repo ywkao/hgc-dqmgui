@@ -127,9 +127,9 @@ private:
       obj->SetOption("colz");
 
     } else if (name.Contains("hex_stdadc")) {
-      // resctrict noize range in [0.0, 2.0]
+      // resctrict noize range in [0.0, 3.0]
       obj->SetMinimum(0.0);
-      obj->SetMaximum(2.0);
+      obj->SetMaximum(3.0);
 
       TList *functions = obj->GetListOfFunctions();
       if (functions) {
