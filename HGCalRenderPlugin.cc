@@ -160,6 +160,15 @@ private:
       gStyle->SetPaintTextFormat(".2e");
       obj->SetMarkerSize(2.0);
       obj->SetOption("colz");
+
+      // deal with occasional fake-uniform-distribution issue
+      double threshold = 1e-3;
+      double maxValue = obj->GetMaximum();
+      if(maxValue > threshold) {
+        obj->SetMinimum(threshold);
+        obj->SetMaximum(maxValue);
+      }
+
     } else {
       gStyle->SetPaintTextFormat(".2f");
       obj->SetMarkerSize(0.7);
