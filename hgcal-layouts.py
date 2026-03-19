@@ -72,17 +72,30 @@ layout_configs = [
      "HGCAL/EndCap_Minus/Layer_{layer}/rechittimevsenergy"),
 ]
 
-cassette_layout = [
+LAYERS   = [25, 26]
+ENDCAP   = "Minus"
+CASSETTES = [1]
 
-    ("Module - Average ADC in a Cassette",
-     "HGCAL/EndCap_Minus/Layer_25/module_avgadc_layer_25"),
+cassette_layout = []
+for layer in LAYERS:
+    base = f"HGCAL/EndCap_{ENDCAP}/Layer_{layer}"
 
-    ("Channel - Average ADC",
-     "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_avgadc_layer_25"),
+    # Modules in a layer
+    cassette_layout.append(
+        (f"Average ADC per module - Layer {layer}",
+         f"{base}/module_avgadc_layer_{layer}")
+    )
 
-    ("Channel - Noise (ADC Standard Deviation)",
-     "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_stdadc_layer_25"),
-]
+    # Cassette-level
+    for cassette in CASSETTES:
+        cassette_base = f"{base}/Cassette_{cassette}"
+        cassette_layout += [
+            (f"ADC - Layer {layer} - Cassette {cassette}",
+             f"{cassette_base}/hex_avgadc_layer_{layer}"),
+
+            (f"Noise - Layer {layer} - Cassette {cassette}",
+             f"{cassette_base}/hex_stdadc_layer_{layer}"),
+        ]
 
 ### "HGCAL/EventInfo/iRun"
 

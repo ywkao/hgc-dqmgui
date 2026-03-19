@@ -14,11 +14,56 @@
 # (I.e.: Don't make a mess.)
 
 # DQM workspaces:
-server.workspace('DQMContent', 35, 'Calorimeters', 'HGCAL', '^HGCAL/', '',
-                 "HGCAL/EndCap_Minus/Layer_25/module_avgadc_layer_25",
-                 "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_avgadc_layer_25",
-                 "HGCAL/EndCap_Minus/Layer_25/Cassette_1/hex_stdadc_layer_25",
-                )
+def hgcal_workspace(server,
+                    layers,
+                    endcaps=('Minus', 'Plus'),
+                    cassettes=None,
+                    histogram_types=('avgadc', 'stdadc')):
+    """
+    Build HGCAL workspace content list at script-write time.
+    The GUI will attempt to fetch all listed paths; missing plots are handled at runtime.
+
+    Args:
+        server      : DQM server object
+        layers      : list of layer numbers, e.g. [25, 26, 27]
+        endcaps     : which endcaps to include
+        cassettes   : list of cassette numbers, or None to skip cassette-level plots
+        histogram_types : which histogram types to include per cassette
+    """
+    content = []
+
+    for endcap in endcaps:
+        for layer in layers:
+            base = f"HGCAL/EndCap_{endcap}/Layer_{layer}"
+
+            # Module-level (always included)
+            content.append(f"{base}/module_avgadc_layer_{layer}")
+
+            # Cassette-level
+            if cassettes:
+                for cassette in cassettes:
+                    for htype in histogram_types:
+                        content.append(f"{base}/Cassette_{cassette}/hex_{htype}_layer_{layer}")
+
+    server.workspace(
+        'DQMContent', 35,
+        'Calorimeters', 'HGCAL',
+        '^HGCAL/', '',
+        *content
+    )
+
+# --- Configuration block: edit only this section ---
+
+LAYERS     = [25, 26]
+ENDCAPS    = ['Minus']
+CASSETTES  = [1]
+HIST_TYPES = ['avgadc', 'stdadc']
+
+hgcal_workspace(server,
+                layers=LAYERS,
+                endcaps=ENDCAPS,
+                cassettes=CASSETTES,
+                histogram_types=HIST_TYPES)
 
 #server.workspace('DQMQuality', 0, 'Summaries', 'Summary')
 #server.workspace('DQMSummary', 1, 'Summaries', 'Reports')

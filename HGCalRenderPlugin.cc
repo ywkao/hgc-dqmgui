@@ -28,18 +28,6 @@ public:
   virtual bool applies(const VisDQMObject &o, const VisDQMImgInfo &) {
     if (o.name.find("HGCAL") != std::string::npos)
       return true;
-    else if (o.name.find("HGCAL/Modules") != std::string::npos)
-      return true;
-    else if (o.name.find("HGCAL/Layers") != std::string::npos)
-      return true;
-    else if (o.name.find("HGCAL/Digis") != std::string::npos)
-      return true;
-    else if (o.name.find("HGCAL/EndCap") != std::string::npos)
-      return true;
-    else if (o.name.find("HGCAL/FED") != std::string::npos)
-      return true;
-    else if (o.name.find("HGCAL/Quick") != std::string::npos)
-      return true;
     else
       return false;
   }
